@@ -24,6 +24,7 @@ import egovframework.example.service.EgovService;
 @Controller
 public class EgovController {
 	
+	////
 	@Resource(name="egovService")
 	private EgovService egovService;
 	
