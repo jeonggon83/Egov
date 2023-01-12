@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.dao.EgovDAO">
+
+	<resultMap id="StaffInfoVo" type="egovframework.example.domain.StaffInfoVo">	
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="num" column="num" />
+		<result property="add" column="add" />
+		<result property="phone" column="phone" />
+		<result property="rank" column="rank" />
+		<result property="dept" column="dept" />		
+		<result property="email" column="email" />		
+	</resultMap>
+
+	<select id = "getSemester" resultType="map">
+		SELECT sem, year
+		FROM semester
+	</select>
+	
+    <insert id="insertWorker"> 
+         INSERT INTO worker(NO, NUM, NAME) VALUES ('4', #{name}, #{num}) 
+    </insert>	
+
+	<select id = "getSearchName" resultMap="StaffInfoVo" parameterType="string">
+		SELECT * FROM worker
+		WHERE name like CONCAT('%',#{name},'%')
+	</select>
+	
+	<select id = "getSearchResult" resultMap="StaffInfoVo" parameterType="string">
+		SELECT * FROM worker
+		WHERE num = #{name}
+	</select>
+	
+</mapper>
